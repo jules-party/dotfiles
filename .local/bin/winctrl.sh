@@ -1,7 +1,5 @@
 #!/bin/sh
 
-NL='
-'
 # top, bottom, left, right
 GAPS=(40 40 40 40)
 # gap between windows
