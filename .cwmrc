@@ -1,0 +1,71 @@
+#!/bin/sh
+unbind-key all
+sticky yes
+
+# font
+fontname "Spleen:pixelsize=18:regular"
+
+# Appearance
+borderwidth 2
+color activeborder "#ffffff"
+color inactiveborder "#ababab"
+
+# Menu Colors
+color font "#e3e3e3"
+color selfont "#e3e3e3"
+color menubg "#333333"
+color menufg "#666666"
+
+# Gaps (top, bottom, left, right)
+gap 40 40 40 40
+
+# Window controls
+bind-key 4-Tab window-cycle
+bind-key 4S-Tab window-rcycle
+bind-key 4-f window-fullscreen
+bind-key 4-m window-maximize
+bind-key 4S-w window-close
+bind-key 4-h window-hide
+
+bind-key 4-r restart
+bind-key 4-q quit
+
+bind-mouse 4-1 window-move
+bind-mouse 4-3 window-resize
+bind-mouse 4-2 menu-window
+bind-mouse C-1 window-raise
+
+# Snap windows
+bind-key 4-Left  "winctrl.sh left"
+bind-key 4-Down  "winctrl.sh down"
+bind-key 4-Up    "winctrl.sh up"
+bind-key 4-Right "winctrl.sh right"
+bind-key 4-x     "winctrl.sh center"
+
+# Workspaces
+bind-key 4-1    group-only-1
+bind-key 4-2    group-only-2
+bind-key 4-3    group-only-3
+bind-key 4-4    group-only-4
+
+bind-key 4S-1   window-movetogroup-1
+bind-key 4S-2   window-movetogroup-2
+bind-key 4S-3   window-movetogroup-3
+bind-key 4S-4   window-movetogroup-4
+
+# Launchers
+#bind-key 4-d "rofi -modi drun -show drun"	
+bind-key 4-d dmenu_run
+bind-kley 4-slash menu-slash
+
+# Binds
+bind-key 4-Return xterm
+bind-key 4-c chromium
+bind-key 4-l /home/jule/.local/bin/lock.sh
+
+# Ignores
+ignore Bar # lemonbar
+
+command Xterm xterm
+command Chromium chromium
+command LibreOffice libreoffice
