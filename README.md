@@ -1,7 +1,7 @@
-# Dotfiles
-Simple dotfiles for my school laptop
+# dotfiles
+simple dotfiles for my school laptop
 
-Dots Info:
+**dots info**:
 * distro: Arch Linux
 * wm: cwm
 * term: xterm
