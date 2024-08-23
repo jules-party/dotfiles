@@ -18,8 +18,12 @@ WID=${wininfoarr[1]}
 POS=${wininfoarr[3]}
 GEO=${wininfoarr[7]}
 
+GEO=(${GEO//x/ })
+POS=(${POS//,/ })
+
+
 # See if argument is valid
-args=('up' 'down' 'right' 'left' 'center')
+args=('up' 'down' 'left' 'right' 'center')
 if [[ ! " ${args[*]} " == *" $1 "* ]];then
 	printf "argument, $1, not valid!"
 	exit 1
@@ -29,32 +33,27 @@ center() {
 	XHALF=$((${RES[0]}/2))
 	YHALF=$((${RES[1]}/2))
 
-	GEO=(${GEO//x/ })
 	NX=$((${XHALF}-(${GEO[0]}/2)))
 	NY=$((${YHALF}-(${GEO[1]}/2)))
 
 	wmctrl -ir $WID -e "0,$NX,$NY,${GEO[0]},${GEO[1]}"
-	xdotool mousemove $((${NX}+20)) $((${NY}+20))
+	xdotool mousemove $((${NX}+(${GEO[0]}/2))) $((${NY}+(${GEO[1]}/2)))
 }
 
 up() {
-	GEO=(${GEO//x/ })
-	POS=(${POS//,/ })
 	NH=$(((${RES[1]}/2)-(${GAPS[0]}+${BGAP})))
 	NY=${GAPS[1]}
 
 	wmctrl -ir $WID -e "0,${POS[0]},$NY,${GEO[0]},$NH"
-	xdotool mousemove $((${POS[0]}+20)) $((${NY}+20))
+	xdotool mousemove $((${POS[0]}+(${GEO[0]}/2))) $((${NY}+(${GEO[1]}/2)))
 }
 
 down() {
-	GEO=(${GEO//x/ })
-	POS=(${POS//,/ })
 	NH=$(((${RES[1]}/2)-(${BGAP}+${GAPS[1]})))
 	NY=$((${RES[1]}-(${GAPS[1]}+${NH})))
 
 	wmctrl -ir $WID -e "0,${POS[0]},$NY,${GEO[0]},$NH"
-	xdotool mousemove $((${POS[0]}+20)) $((${NY}+20))
+	xdotool mousemove $((${POS[0]}+(${GEO[0]}/2))) $((${NY}+(${GEO[1]}/2)))
 }
 
 left() {
@@ -69,7 +68,7 @@ left() {
 	# g,x,y,w,h
 	# g is for gravity, not needed
 	wmctrl -ir $WID -e "0,$NX,$NY,$NW,$NH"
-	xdotool mousemove $((${NX}+20)) $((${NY}+20))
+	xdotool mousemove $((${NX}+(${GEO[0]}/2))) $((${NY}+(${GEO[1]}/2)))
 }
 
 right() {
@@ -87,7 +86,7 @@ right() {
 	# g,x,y,w,h
 	# g is for gravity, not needed
 	wmctrl -ir $WID -e "0,$NX,$NY,$NW,$NH"
-	xdotool mousemove $((${NX}+20)) $((${NY}+20))
+	xdotool mousemove $((${NX}+(${GEO[0]}/2))) $((${NY}+(${GEO[1]}/2)))
 }
 
 case $1 in
