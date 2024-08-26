@@ -1,6 +1,6 @@
 XTerm.termName: xterm-256color
 
-XTerm.vt100.faceName: Spleen:pixelsize=24:regular
+XTerm.vt100.faceName: Terminus:pixelsize=24:regular
 XTerm.vt100.font: 7x13
 
 ! Fix Backspace

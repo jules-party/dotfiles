@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # top, bottom, left, right
-GAPS=(40 40 40 40)
+GAPS=(40 50 40 40)
 # gap between windows
 BGAP=10
 
@@ -23,11 +23,33 @@ POS=(${POS//,/ })
 
 
 # See if argument is valid
-args=('up' 'down' 'left' 'right' 'center')
+args=('up' 'down' 'left' 'right' 'center' 'maximize')
 if [[ ! " ${args[*]} " == *" $1 "* ]];then
 	printf "argument, $1, not valid!"
 	exit 1
 fi
+
+# don't continue if lemobar is the selected window
+WIN=$(xdotool getwindowfocus getwindowname)
+WIN=${WIN,,}
+if [ "$WIN" = "bar" ];then
+	printf "selected window is 'bar'!"
+	exit 1
+fi
+
+maximize() {
+	XHALF=$((${RES[0]}/2))
+	YHALF=$((${RES[1]}/2))
+
+	NW=$((${RES[0]}-(${GAPS[2]}+${GAPS[3]})))
+	NH=$((${RES[1]}-(${GAPS[0]}+${GAPS[1]})))
+
+	NX=$((${XHALF}-(${NW}/2)))
+	NY=$((${YHALF}-(${NH}/2)))
+
+	wmctrl -ir $WID -e "0,${GAPS[0]},${GAPS[2]},$NW,$NH"
+	xdotool mousemove $((${NX}+(${NW}/2))) $((${NY}+(${NH}/2)))
+}
 
 center() {
 	XHALF=$((${RES[0]}/2))
@@ -95,5 +117,6 @@ case $1 in
 	'left') left;;
 	'right') right;;
 	'center') center;;
+	'maximize') maximize;;
 esac
 

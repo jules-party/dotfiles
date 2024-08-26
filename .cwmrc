@@ -7,8 +7,8 @@ fontname "Spleen:pixelsize=18:regular"
 
 # Appearance
 borderwidth 2
-color activeborder "#ffffff"
-color inactiveborder "#ababab"
+color activeborder "#af875f"
+color inactiveborder "#1c1c1c"
 
 # Menu Colors
 color font "#e3e3e3"
@@ -17,13 +17,13 @@ color menubg "#333333"
 color menufg "#666666"
 
 # Gaps (top, bottom, left, right)
-gap 40 40 40 40
+gap 0 0 0 0
 
 # Window controls
 bind-key 4-Tab window-cycle
 bind-key 4S-Tab window-rcycle
 bind-key 4-f window-fullscreen
-bind-key 4-m window-maximize
+bind-key 4-m "winctrl.sh maximize"
 bind-key 4S-w window-close
 bind-key 4-h window-hide
 
@@ -55,7 +55,7 @@ bind-key 4S-4   window-movetogroup-4
 
 # Launchers
 #bind-key 4-d "rofi -modi drun -show drun"	
-bind-key 4-d dmenu_run
+bind-key 4-d dmenu_desktop_run
 bind-kley 4-slash menu-slash
 
 # Binds
@@ -65,6 +65,7 @@ bind-key 4-l /home/jule/.local/bin/lock.sh
 
 # Ignores
 ignore Bar # lemonbar
+ignore bar
 
 command Xterm xterm
 command Chromium chromium
