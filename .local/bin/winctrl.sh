@@ -23,7 +23,7 @@ POS=(${POS//,/ })
 
 
 # See if argument is valid
-args=('up' 'down' 'left' 'right' 'center' 'maximize')
+args=('up' 'down' 'left' 'right' 'center' 'maximize' 'exleft' 'exright' 'exup' 'exdown' 'uxleft' 'uxright' 'uxup' 'uxdown')
 if [[ ! " ${args[*]} " == *" $1 "* ]];then
 	printf "argument, $1, not valid!"
 	exit 1
@@ -36,6 +36,66 @@ if [ "$WIN" = "bar" ];then
 	printf "selected window is 'bar'!"
 	exit 1
 fi
+
+uxdown() {
+	NH=$((${GEO[1]}-20))
+	NY=$((${POS[1]}+20))
+
+	wmctrl -ir $WID -e "0,${POS[0]},$NY,${GEO[0]},$NH"
+	xdotool mousemove $((${POS[0]}+(${GEO[0]}/2))) $((${NY}+(${NH}/2)))
+}
+
+uxup() {
+	NH=$((${GEO[1]}-20))
+
+	wmctrl -ir $WID -e "0,${POS[0]},${POS[1]},${GEO[0]},$NH"
+	xdotool mousemove $((${POS[0]}+(${GEO[0]}/2))) $((${POS[1]}+(${NH}/2)))
+}
+
+uxleft() {
+	NW=$((${GEO[0]}-20))
+
+	wmctrl -ir $WID -e "0,${POS[0]},${POS[1]},$NW,${GEO[1]}"
+	xdotool mousemove $((${POS[0]}+(${NW}/2))) $((${POS[1]}+(${GEO[1]}/2)))
+}
+
+uxright() {
+	NW=$((${GEO[0]}-20))
+	NX=$((${POS[0]}+20))
+
+	wmctrl -ir $WID -e "0,$NX,${POS[1]},$NW,${GEO[1]}"
+	xdotool mousemove $((${NX}+(${NW}/2))) $((${POS[1]}+(${GEO[1]}/2)))
+}
+
+exup() {
+	NH=$((${GEO[1]}+20))
+	NY=$((${POS[1]}-20))
+
+	wmctrl -ir $WID -e "0,${POS[0]},$NY,${GEO[0]},$NH"
+	xdotool mousemove $((${POS[0]}+(${GEO[0]}/2))) $((${NY}+(${NH}/2)))
+}
+
+exdown() {
+	NH=$((${GEO[1]}+20))
+
+	wmctrl -ir $WID -e "0,${POS[0]},${POS[1]},${GEO[0]},$NH"
+	xdotool mousemove $((${POS[0]}+(${GEO[0]}/2))) $((${POS[1]}+(${NH}/2)))
+}
+
+exright() {
+	NW=$((${GEO[0]}+20))
+
+	wmctrl -ir $WID -e "0,${POS[0]},${POS[1]},$NW,${GEO[1]}"
+	xdotool mousemove $((${POS[0]}+(${NW}/2))) $((${POS[1]}+(${GEO[1]}/2)))
+}
+
+exleft() {
+	NW=$((${GEO[0]}+20))
+	NX=$((${POS[0]}-20))
+
+	wmctrl -ir $WID -e "0,$NX,${POS[1]},$NW,${GEO[1]}"
+	xdotool mousemove $((${NX}+(${NW}/2))) $((${POS[1]}+(${GEO[1]}/2)))
+}
 
 maximize() {
 	XHALF=$((${RES[0]}/2))
@@ -112,11 +172,19 @@ right() {
 }
 
 case $1 in
-	'up') up;;
-	'down') down;;
-	'left') left;;
-	'right') right;;
-	'center') center;;
+	'up')       up;;
+	'down')     down;;
+	'left')     left;;
+	'right')    right;;
+	'center')   center;;
 	'maximize') maximize;;
+	'exleft')   exleft;;
+	'exright')  exright;;
+	'exup')     exup;;
+	'exdown')   exdown;;
+	'uxleft')   uxleft;;
+	'uxright')  uxright;;
+	'uxup')     uxup;;
+	'uxdown')   uxdown;;
 esac
 
