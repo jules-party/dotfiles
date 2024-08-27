@@ -42,6 +42,18 @@ bind-key 4-Up    "winctrl.sh up"
 bind-key 4-Right "winctrl.sh right"
 bind-key 4-x     "winctrl.sh center"
 
+# Expand Windows
+bind-key 4S-Left  "winctrl.sh exleft"
+bind-key 4S-Down  "winctrl.sh exdown"
+bind-key 4S-Up    "winctrl.sh exup"
+bind-key 4S-Right "winctrl.sh exright"
+
+# Unexpand Windows
+bind-key 4C-Left  "winctrl.sh uxleft"
+bind-key 4C-Down  "winctrl.sh uxdown"
+bind-key 4C-Up    "winctrl.sh uxup"
+bind-key 4C-Right "winctrl.sh uxright"
+
 # Workspaces
 bind-key 4-1    group-only-1
 bind-key 4-2    group-only-2
