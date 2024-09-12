@@ -10,6 +10,10 @@ Battery() {
 	echo -n "${BATPERC#*, }"
 }
 
+Brightness() {
+	echo -n "$(brightnessctl get)"
+}
+
 ActiveWindow() {
 	win=$(xdotool getwindowfocus getwindowname)
 	len=${#win}
@@ -21,7 +25,14 @@ ActiveWindow() {
 	fi
 }
 
+Music() {
+	artist=$(playerctl metadata xesam:artist)
+	track=$(playerctl metadata xesam:title)
+
+	echo -n "$track - $artist"
+}
+
 while true; do
-	echo -e "%{l}  $(ActiveWindow)" "%{r}$(Battery) %{B#af875f}  $(Clock)  %{B-}"
+	echo -e "%{l}  $(ActiveWindow)" "%{c}$(Music)" "%{r}$(Battery); brightness: $(Brightness) %{B#af875f}  $(Clock)  %{B-}"
 	sleep 0.1s
 done

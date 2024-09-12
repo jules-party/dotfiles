@@ -1,11 +1,14 @@
 #!/bin/sh
+# vim:fileencoding=utf-8:foldmethod=marker
 unbind-key all
 sticky yes
 
-# font
+# Appearance {{{
+
+# Font
 fontname "Spleen:pixelsize=18:regular"
 
-# Appearance
+# Borders
 borderwidth 2
 color activeborder "#af875f"
 color inactiveborder "#1c1c1c"
@@ -19,7 +22,9 @@ color menufg "#666666"
 # Gaps (top, bottom, left, right)
 gap 0 0 0 0
 
-# Window controls
+# }}}
+
+# Window controls {{{
 bind-key 4-Tab window-cycle
 bind-key 4S-Tab window-rcycle
 bind-key 4-f window-fullscreen
@@ -34,6 +39,7 @@ bind-mouse 4-1 window-move
 bind-mouse 4-3 window-resize
 bind-mouse 4-2 menu-window
 bind-mouse C-1 window-raise
+bind-key 4-k window-freeze
 
 # Snap windows
 bind-key 4-Left  "winctrl.sh left"
@@ -54,6 +60,16 @@ bind-key 4C-Down  "winctrl.sh uxdown"
 bind-key 4C-Up    "winctrl.sh uxup"
 bind-key 4C-Right "winctrl.sh uxright"
 
+# }}}
+
+# WM Keybinds {{{
+bind-key 4-r restart
+bind-key 4-q quit
+
+# Brightness
+bind-key 4-XF86MonBrightnessUp   "brightnessctl set 5+"
+bind-key 4-XF86MonBrightnessDown "brightnessctl set 5-"
+
 # Workspaces
 bind-key 4-1    group-only-1
 bind-key 4-2    group-only-2
@@ -65,12 +81,13 @@ bind-key 4S-2   window-movetogroup-2
 bind-key 4S-3   window-movetogroup-3
 bind-key 4S-4   window-movetogroup-4
 
+# }}}
+
 # Launchers
-#bind-key 4-d "rofi -modi drun -show drun"	
 bind-key 4-d dmenu_desktop_run
 bind-kley 4-slash menu-slash
 
-# Binds
+# User Binds
 bind-key 4-Return xterm
 bind-key 4-c chromium
 bind-key 4-l /home/jule/.local/bin/lock.sh

@@ -2,6 +2,8 @@
 vim.wo.number = true
 vim.opt["tabstop"] = 4
 vim.opt["shiftwidth"] = 4
+vim.opt.spell = true
+vim.opt.spelllang = { "en_us" }
 
 require('plugins')
 
