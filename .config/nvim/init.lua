@@ -4,11 +4,12 @@ vim.opt["tabstop"] = 4
 vim.opt["shiftwidth"] = 4
 vim.opt.spell = true
 vim.opt.spelllang = { "en_us" }
+vim.opt.termguicolors = true
 
 require('plugins')
 
 -- Colorscheme
-local ok, _ = pcall(vim.cmd, 'colorscheme oak')
+local ok, _ = pcall(vim.cmd, 'colorscheme paper')
 if not ok then
 	vim.cmd 'colorscheme default'
 end

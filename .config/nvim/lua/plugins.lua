@@ -1,6 +1,7 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
+	use 'yorickpeterse/vim-paper'
 	use 'wbthomason/packer.nvim'
 	use 'vigoux/oak'
 	use 'skwee357/nvim-prose'

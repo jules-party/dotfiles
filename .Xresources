@@ -1,4 +1,11 @@
+URxvt.font: xft:Terminus:regular:pixelsize=24
+URxvt.boldFont: xft:Terminus:bold:pixelsize=24
+URxvt.scrollBar: false
+Urxvt*transparent: false
+!! URxvt.backgroundPixmap: /home/jule/.local/share/untitled.png;style=tiled
+
 XTerm.termName: xterm-256color
+
 
 XTerm.vt100.faceName: Terminus:pixelsize=24:regular
 XTerm.vt100.font: 7x13
@@ -12,37 +19,37 @@ XTerm*VT100.Translations: \
 ! Copy & Paste
 xterm*VT100.Translations: #override \
       Shift <KeyPress> Insert: insert-selection(CLIPBOARD) \n\
-      Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
+      Ctr Shift <Key>V:    insert-selection(CLIPBOARD) \n\
       Ctrl Shift <Key>C:    copy-selection(CLIPBOARD) \n\
       Ctrl <Btn1Up>: exec-formatted("xdg-open '%t'", PRIMARY)
 
-*background:        #1c1c1c
-*foreground:        #dfdfaf
+*background:        #F2EEDE
+*foreground:        #000000
 
-*cursorColor:       #af875f
-*colorUL:           #ffffff
-*underlineColor:    #ffffff
+*cursorColor:       #555555
+*colorUL:           #000000
+*underlineColor:    #000000
 !black
-*color0:	#262626
-*color8:	#626262
+*color0:	#000000
+*color8:	#555555
 !red
-*color1:	#af5f5f
-*color9:	#af5f5f
+*color1:	#CC3E28
+*color9:	#CC3E28
 !green
-*color2:	#87875f
-*color10:	#87875f
+*color2:	#216609
+*color10:	#216609
 !yellow
-*color3:	#af875f
-*color11:	#af875f
+*color3:	#B58900
+*color11:	#B58900
 !blue
-*color4:	#878787
-*color12:	#878787
+*color4:	#1E6FCC
+*color12:	#1E6FCC
 !purple
-*color5:	#af8787
-*color13:	#af8787
+*color5:	#5C21A5
+*color13:	#5C21A5
 !cyan
-*color6:	#87afaf
-*color14:	#87afaf
+*color6:	#158C86
+*color14:	#158C86
 !white
-*color7:	#dfdfaf
-*color15:	#dfdfaf
+*color7:	#AAAAAA
+*color15:	#AAAAAA
