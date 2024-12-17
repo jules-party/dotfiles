@@ -1,5 +1,10 @@
 #!/bin/sh
 
+Workspace() {
+	WORKSPACE=$(xprop -root 32c '\t$0' _NET_CURRENT_DESKTOP | cut -f 2)
+	echo -n "$WORKSPACE"
+}
+
 Clock() {
 	DATETIME=$(date "+%T")
 	echo -n "$DATETIME"
@@ -28,11 +33,16 @@ ActiveWindow() {
 Music() {
 	artist=$(playerctl metadata xesam:artist)
 	track=$(playerctl metadata xesam:title)
-
-	echo -n "$track - $artist"
+	
+	if [ -z $artist ] && [ -z $track ];then
+		echo -n ""
+	else
+		echo -n "$track - $artist"
+	fi
 }
 
 while true; do
-	echo -e "%{l}  $(ActiveWindow)" "%{c}$(Music)" "%{r}$(Battery); brightness: $(Brightness) %{B#af875f}  $(Clock)  %{B-}"
+	#old: #927539
+	echo -e "%{l}  $(Workspace)  $(ActiveWindow)" "%{c}$(Music)" "%{r}$(Battery); brightness: $(Brightness) %{F#e3e3e3}%{B#7ca8b5}  $(Clock)  %{B-}%{F-}"
 	sleep 0.1s
 done

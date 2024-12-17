@@ -1,0 +1,8 @@
+#!/bin/sh
+# Copies Screenshot to the clipboard
+
+DEST=/tmp/screenshot.png
+
+gnome-screenshot -a -f $DEST
+xclip -in -selection clipboard -target image/png $DEST
+rm $DEST

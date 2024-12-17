@@ -1,0 +1,19 @@
+#!/bin/bash
+
+FPS=30
+RES="1920x1200"
+NAME=$(date +"$HOME/.local/share/recordings/%G-%m-%d_%k-%M-%S.mp4")
+
+while getopts "f:r:n" flag
+do
+	case $flag in
+		f) FPS=$OPTARG ;;
+		r) RES=$OPTARG ;;
+		n) NAME=$OPTARG ;;
+		\?) echo "invalid option '$OPTARG'" ;;
+		:) echo "-$OPTARG requires argument"; exit 1 ;;
+	esac
+done
+
+ffmpeg -f x11grab -video_size $RES -framerate $FPS -i 0.0+0,0 -vf format=yuv420p $NAME 
+

@@ -18,7 +18,7 @@ autoload -U compinit; compinit
 
 # Globals: useful for scripts {{{
 PATH="$PATH:$HOME/.local/bin"
-export TERMINAL=xterm
+export TERMINAL=urxvt
 export EDITOR=nvim
 export BROWSER=ungoogled-chromium
 # }}}
@@ -37,6 +37,11 @@ function ytdlp_transcript() {
     yt-dlp --skip-download --write-subs --write-auto-subs --sub-lang en --sub-format ttml --convert-subs srt --output "transcript.%(ext)s" $1;
     cat ./transcript.en.srt | sed '/^$/d' | grep -v '^[0-9]*$' | grep -v '\-->' | sed 's/<[^>]*>//g' > output.txt;
 }
+# }}}
+
+# Binds {{{
+bindkey -e -r '^[x'
+bindkey -a -r ':'
 # }}}
 
 # Loads

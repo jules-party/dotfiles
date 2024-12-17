@@ -1,8 +1,8 @@
-URxvt.font: xft:Terminus:regular:pixelsize=24
-URxvt.boldFont: xft:Terminus:bold:pixelsize=24
+URxvt.font: xft:Terminus:regular:pixelsize=22
+URxvt.boldFont: xft:Terminus:bold:pixelsize=22
 URxvt.scrollBar: false
 Urxvt*transparent: false
-!! URxvt.backgroundPixmap: /home/jule/.local/share/untitled.png;style=tiled
+URxvt.backgroundPixmap: /home/jule/.local/share/untitled.png;style=tiled
 
 XTerm.termName: xterm-256color
 
@@ -23,8 +23,10 @@ xterm*VT100.Translations: #override \
       Ctrl Shift <Key>C:    copy-selection(CLIPBOARD) \n\
       Ctrl <Btn1Up>: exec-formatted("xdg-open '%t'", PRIMARY)
 
-*background:        #F2EEDE
-*foreground:        #000000
+!*background:        #F2EEDE
+*background:		#c5c7b2
+*foreground:		#001003
+!*foreground:        #000000
 
 *cursorColor:       #555555
 *colorUL:           #000000

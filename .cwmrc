@@ -9,9 +9,9 @@ sticky yes
 fontname "Spleen:pixelsize=18:regular"
 
 # Borders
-borderwidth 2
-color activeborder "#555555"
-color inactiveborder "#F2EEDE"
+borderwidth 3
+color activeborder "#7ca8b5"
+color inactiveborder "#001003"
 
 # Menu Colors
 color font "#e3e3e3"
@@ -67,8 +67,8 @@ bind-key 4-r restart
 bind-key 4-q quit
 
 # Brightness
-bind-key 4-XF86MonBrightnessUp   "brightnessctl set 5+"
-bind-key 4-XF86MonBrightnessDown "brightnessctl set 5-"
+bind-key XF86MonBrightnessUp   "brightnessctl set 5+"
+bind-key XF86MonBrightnessDown "brightnessctl set 5-"
 
 # Workspaces
 bind-key 4-1    group-only-1
@@ -90,7 +90,8 @@ bind-kley 4-slash menu-slash
 # User Binds
 bind-key 4-Return urxvt
 bind-key 4-c chromium
-bind-key 4-l /home/jule/.local/bin/lock.sh
+bind-key 4-l lock.sh
+bind-key 4S-s screenshot 
 
 # Ignores
 ignore Bar # lemonbar

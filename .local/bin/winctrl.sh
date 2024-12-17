@@ -21,6 +21,15 @@ GEO=${wininfoarr[7]}
 GEO=(${GEO//x/ })
 POS=(${POS//,/ })
 
+# wm
+WM=$(wmctrl -m)
+WM=(${WM// / })
+WM=${WM[1],,}
+
+if [ $WM == "berry" ];then
+	GEO[0]=$((${GEO[0]}+8))
+	GEO[1]=$((${GEO[1]}+28))
+fi
 
 # See if argument is valid
 args=('up' 'down' 'left' 'right' 'center' 'maximize' 'exleft' 'exright' 'exup' 'exdown' 'uxleft' 'uxright' 'uxup' 'uxdown')
@@ -71,6 +80,10 @@ exup() {
 	NH=$((${GEO[1]}+20))
 	NY=$((${POS[1]}-20))
 
+	echo "0,${POS[0]},$NY,${GEO[0]},$NH"
+
+	echo ${GEO[1]}
+	echo $NH
 	wmctrl -ir $WID -e "0,${POS[0]},$NY,${GEO[0]},$NH"
 	xdotool mousemove $((${POS[0]}+(${GEO[0]}/2))) $((${NY}+(${NH}/2)))
 }
