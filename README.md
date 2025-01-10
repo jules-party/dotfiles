@@ -1,5 +1,6 @@
 # dotfiles
 simple dotfiles for my school laptop
+![screenshot](screeny.png)
 
 **dots info**:
 * distro: Arch Linux
