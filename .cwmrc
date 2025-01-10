@@ -66,6 +66,9 @@ bind-key 4C-Right "winctrl.sh uxright"
 bind-key 4-r restart
 bind-key 4-q quit
 
+# Screenshot
+bind-key Print "scrot -e 'mv $f \${HOME}/.local/media/screenshots/'"
+
 # Brightness
 bind-key XF86MonBrightnessUp   "brightnessctl set 5+"
 bind-key XF86MonBrightnessDown "brightnessctl set 5-"
